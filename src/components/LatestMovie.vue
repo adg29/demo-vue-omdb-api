@@ -32,7 +32,7 @@
                     <v-card-actions class="justify-center">
                         <v-btn flat
                             color="green"
-                            @click="singleMovie(itemimdbID)"
+                            @click="singleMovie(item.imdbID)"
                         >
                             View
                         </v-btn>
@@ -50,6 +50,11 @@ export default {
         return {
             wholeResponse: [],
             loading: true
+        }
+    },
+    methods: {
+        singleMovie(id) {
+            this.$router.push('/movie/' + id)
         }
     },
     mounted() {
