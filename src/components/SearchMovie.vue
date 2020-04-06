@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import movieApi from '@/services/MovieApi'
 
 export default {
     props: ['name'],
@@ -76,12 +76,10 @@ export default {
             this.$router.push(`/movie/${id}`)
         },
         fetchResult(value) {
-            const url = `http://www.omdbapi.com/?apikey=${process.env.VUE_APP_OMDB_API_KEY}&Content-Type=application/json&s=${this.name}`
-            axios
-                .get(url)
+            movieApi.fetchMovieCollection(value)
                 .then(response => {
-                    if (response.data.Response === 'True') {
-                        this.movieResponse = response.data.Search
+                    if (response.Response === 'True') {
+                        this.movieResponse = response.Search
                         this.loading = false
                         this.noData = false
                     } else {

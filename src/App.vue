@@ -26,7 +26,7 @@
       </v-flex>
 
       <v-btn
-        flat
+        text
         :disabled="!dataAvailable"
         @click="searchMovie"
       >

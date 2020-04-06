@@ -30,7 +30,7 @@
                         </div>
                     </v-card-title>
                     <v-card-actions class="justify-center">
-                        <v-btn flat
+                        <v-btn text
                             color="green"
                             @click="singleMovie(item.imdbID)"
                         >
@@ -44,7 +44,8 @@
 </template>
 
 <script>
-import axios from 'axios'
+import movieApi from '@/services/MovieApi'
+
 export default {
     data()  {
         return {
@@ -58,10 +59,9 @@ export default {
         }
     },
     mounted() {
-        axios
-            .get(`http://www.omdbapi.com/?s=mummy&apikey=${process.env.VUE_APP_OMDB_API_KEY}&page=1&type=movie&Content-Type=application/json`)
+        movieApi.fetchMovieCollection('indiana')
             .then(response => {
-                this.wholeResponse = response.data.Search
+                this.wholeResponse = response.Search
                 this.loading = false
             })
             .catch(error => {

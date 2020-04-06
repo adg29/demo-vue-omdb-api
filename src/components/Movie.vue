@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import movieApi from '@/services/MovieApi'
 export default {
     props: ['id'],
     data() {
@@ -71,10 +71,9 @@ export default {
         }
     },
     mounted() {
-        axios
-            .get(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_OMDB_API_KEY}&i=${this.id}&Content-Type=application/json`)
+        movieApi.fetchSingleMovie(this.id)
             .then(response => {
-                this.singleMovie = response.data
+                this.singleMovie = response
             })
             .catch(error => {
                 console.log(error)
