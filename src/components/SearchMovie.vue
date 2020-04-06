@@ -57,20 +57,28 @@ export default {
         }
     },
     mounted() {
-        const url = `http://www.omdbapi.com/?apikey=${process.env.VUE_APP_OMDB_API_KEY}&Content-Type=application/json&s=${this.name}`
-        axios
-            .get(url)
-            .then(response => {
-                this.movieResponse = response.data.Search
-                this.loading = false
-            })
-            .catch(error => {
-                console.log(error)
-            })
+        this.fetchResult(this.name)
+    },
+    watch: {
+        name(value) {
+            this.fetchResult(value)
+        }
     },
     methods: {
         singleMovie(id) {
             this.$router.push(`/movie/${id}`)
+        },
+        fetchResult(value) {
+            const url = `http://www.omdbapi.com/?apikey=${process.env.VUE_APP_OMDB_API_KEY}&Content-Type=application/json&s=${this.name}`
+            axios
+                .get(url)
+                .then(response => {
+                    this.movieResponse = response.data.Search
+                    this.loading = false
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         }
     }
 }
