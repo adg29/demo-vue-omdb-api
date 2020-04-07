@@ -73,7 +73,7 @@
                     </v-btn>
                     <v-dialog
                         v-model="dialog"
-                        width="500"
+                        transition="dialog-bottom-transition"
                         @keydown.escape="dialog = false"
                     >
                         <v-card>
