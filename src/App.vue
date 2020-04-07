@@ -40,9 +40,8 @@
     </v-content>
 
     <v-bottom-navigation
-      :value="activeBtn"
       color="purple lighten-1"
-      app="true"
+      app="True"
     >
 
        <v-btn

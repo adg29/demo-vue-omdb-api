@@ -49,7 +49,7 @@
                         v-model="dialogMetadata"
                         scrollable
                         transition="dialog-bottom-transition"
-
+                        @keydown.escape="dialogMetadata = false"
                     >
                         <v-card>
                             <v-card-title
@@ -63,20 +63,19 @@
                             </v-card-text>
                         </v-card>
                     </v-dialog>
+                    <v-btn
+                        color="green"
+                        dark
+                        id="ratings"
+                        @click="dialog = true"
+                    >
+                        View Ratings
+                    </v-btn>
                     <v-dialog
                         v-model="dialog"
                         width="500"
+                        @keydown.escape="dialog = false"
                     >
-                        <template v-slot:activator="{ on }">
-                        <v-btn
-                            color="green"
-                            dark
-                            id="ratings"
-                            v-on="on"
-                        >
-                            View Ratings
-                        </v-btn>
-                        </template>
                         <v-card>
                             <v-card-title
                                 class="headline grey lighten-2"
