@@ -1,7 +1,7 @@
 {
     "build": {
       "env": {
-        "VARIABLE_NAME": "@demo-vue-omdb-api"
+        "dotenv": true
       }
     }
   }
