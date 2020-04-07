@@ -16,7 +16,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-flex xs12 sm6 md3>
+      <v-flex xs12 sm6 md3 mt-4>
         <v-text-field
           label='Movie Name'
           v-model='searchString'
@@ -41,11 +41,11 @@
 
     <v-bottom-navigation
       color="purple lighten-1"
-      app="True"
+      app
     >
 
        <v-btn
-        href="https://github.com/adg29/demo-movie-app"
+        href="https://github.com/adg29/demo-vue-omdb-api"
         target="_blank"
         text
       >
