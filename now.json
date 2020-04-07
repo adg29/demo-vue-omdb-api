@@ -1,7 +1,7 @@
 {
     "build": {
       "env": {
-        "dotenv": true,
+        "dotenv": "true",
         "VUE_APP_OMDB_API_KEY": "@vue_app_omdb_api_key"
       }
     }
