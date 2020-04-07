@@ -8,7 +8,6 @@
       <div class="d-flex align-center">
         <v-btn
           href="/"
-          target="_blank"
           text
         >
           <span class="mr-2">OMDb Api</span>
@@ -32,20 +31,29 @@
       >
         <span class="mr-2">Search</span>
       </v-btn>
-      <v-btn
-        href="https://github.com/adg29/demo-movie-app"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Github Repo</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
     </v-app-bar>
 
     <v-content>
       <router-view>
       </router-view>
     </v-content>
+
+    <v-bottom-navigation
+      :value="activeBtn"
+      color="purple lighten-1"
+      app="true"
+    >
+
+       <v-btn
+        href="https://github.com/adg29/demo-movie-app"
+        target="_blank"
+        text
+      >
+        <span class="mr-2">Github Repo</span>
+        <v-icon>mdi-open-in-new</v-icon>
+      </v-btn>   
+    </v-bottom-navigation>
+
   </v-app>
 </template>
 
