@@ -20,6 +20,7 @@
         <v-text-field
           label='Movie Name'
           v-model='searchString'
+          @keydown.enter="searchMovie"
          >
         </v-text-field>
       </v-flex>

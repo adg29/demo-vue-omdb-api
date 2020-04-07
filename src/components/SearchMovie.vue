@@ -1,6 +1,6 @@
 <template>
     <v-container v-if="loading">
-        <div class="text-xs-center">
+        <div class="text-center">
         <v-progress-circular
             indeterminate
             :size="150"
@@ -11,7 +11,7 @@
     </v-container>
 
     <v-container v-else-if="noData">
-        <div class="text-xs-center">
+        <div class="text-center">
             <h2>No results for: <pre>{{this.name}}</pre></h2>
         </div>        
     </v-container>
@@ -22,14 +22,18 @@
             v-for="(item, index) in movieResponse"
             :key="index"
             mb-2>
-            <v-card>
+            <v-card
+                @click.native="singleMovie(item.imdbID)"
+            >
                 <v-img
                 :src="item.Poster"
                 aspect-ratio="1"
                 contain
                 ></v-img>
 
-                <v-card-title primary-title>
+                <v-card-title 
+                    primary-title
+                >
                 <div>
                     <h2>{{item.Title}}</h2>
                     <div>Year: {{item.Year}}</div>
