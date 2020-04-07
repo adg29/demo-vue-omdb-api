@@ -1,6 +1,6 @@
 <template>
     <v-container v-if="loading">
-        <div class="text-xs-center">
+        <div class="text-center">
             <v-progress-circular
             indeterminate
             :size="150"
@@ -13,13 +13,16 @@
         <v-layout wrap>
             <v-flex xs12 mr-1 ml-1>
                 <v-card>
+                <v-card-title primary-title>
+                <h1 class="">{{singleMovie.Title}} ({{singleMovie.Year}})</h1>
+                </v-card-title>
                 <v-img
                     :src="singleMovie.Poster"
                     aspect-ratio="2"
+                    contain
                 ></v-img>
-                <v-card-title primary-title>
+                <v-card-title secondary-title>
                     <div>
-                    <h2 class="headline mb-0">{{singleMovie.Title}}-{{singleMovie.Year}}</h2>
                     <p>{{ singleMovie.Plot}} </p>
                     <h3>Genre:</h3> {{singleMovie.Genre}}
                     <h3>Actors:</h3> {{singleMovie.Actors}}
@@ -34,10 +37,32 @@
         </v-layout>
         <v-layout row wrap>
             <v-flex xs12>
-                <pre>
-                    {{JSON.stringify(singleMovie, null, 5)}}
-                </pre>
-                <div class="text-xs-center">
+                <v-row class="text-center ma-6" justify="space-around">
+                    <v-btn
+                        color="green"
+                        dark
+                        @click="dialogMetadata = true"
+                    >
+                        View Metadata
+                    </v-btn>
+                    <v-dialog
+                        v-model="dialogMetadata"
+                        scrollable
+                        transition="dialog-bottom-transition"
+
+                    >
+                        <v-card>
+                            <v-card-title
+                                class="headline grey lighten-2"
+                                primary-title
+                            >
+                                Metadata
+                            </v-card-title>
+                            <v-card-text>
+                            <pre>{{JSON.stringify(singleMovie, null, 5)}}</pre>
+                            </v-card-text>
+                        </v-card>
+                    </v-dialog>
                     <v-dialog
                         v-model="dialog"
                         width="500"
@@ -60,7 +85,7 @@
                                 Ratings
                             </v-card-title>
                             <v-card-text>
-                                <table style="width:100%" border="1" >
+                                <table style="width:80%; margin: 10%;" border="1">
                                     <tr>
                                         <th>Source</th>
                                         <th>Ratings</th>
@@ -84,7 +109,7 @@
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
-                </div>
+                </v-row>
             </v-flex>
         </v-layout>
     </v-container>
@@ -98,8 +123,9 @@ export default {
         return {
             singleMovie: '',
             dialog: false,
+            dialogMetadata: false,
             loading: true,
-            ratings: ''
+            ratings: '',
         }
     },
     mounted() {
